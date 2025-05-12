@@ -1,0 +1,910 @@
+/* Global Styles */
+:root {
+    --primary-color: #7e54ff;
+    --secondary-color: #6c43ff;
+    --accent-color: #ff54b1;
+    --background-color: #0a0a14;
+    --dark-color: #050510;
+    --light-color: #151525;
+    --gray-color: #1a1a2a;
+    --text-color: #e0e0e0;
+    --base-a-color: #ff8f30;  /* Orange/amber for A */
+    --base-t-color: #37c7ff;  /* Bright blue for T */
+    --base-g-color: #ffdf44;  /* Yellow for G */
+    --base-c-color: #3e9fff;  /* Medium blue for C */
+    --border-color: #333333;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.custom-cursor, .custom-cursor * {
+    cursor: none !important;
+}
+
+/* body:not(.custom-cursor) {
+    cursor: url('dna-cursor.svg'), auto;
+} */
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--background-color);
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Custom Cursor Styles */
+body:not(.custom-cursor) a, 
+body:not(.custom-cursor) button, 
+body:not(.custom-cursor) input[type="submit"], 
+body:not(.custom-cursor) .cta-button, 
+body:not(.custom-cursor) .feature-card, 
+body:not(.custom-cursor) .testimonial-card, 
+body:not(.custom-cursor) .step-number, 
+body:not(.custom-cursor) nav ul li a, 
+body:not(.custom-cursor) .footer-links ul li a {
+    cursor: url('dna-cursor-pointer.svg'), pointer;
+}
+/* Custom Cursor Effects */
+.cursor-glow {
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.6;
+    background: radial-gradient(circle, rgba(55, 199, 255, 0.5) 0%, rgba(55, 199, 255, 0) 70%);
+    transform: translate(-50%, -50%);
+    transition: opacity 0.3s ease, width 0.3s ease, height 0.3s ease;
+}
+
+.cursor-follow {
+    position: fixed;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9998;
+    opacity: 0.8;
+    border: 3px solid #37c7ffe6;
+    background-color: rgba(55, 199, 255, 0.2);
+    transform: translate(-50%, -50%);
+    transition: width 0.3s ease, height 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+} 
+
+/* Preloader */
+.preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--dark-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.preloader.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.dna-loader {
+    position: relative;
+    width: 100px;
+    height: 200px;
+}
+
+.dna-loader-strand {
+    position: absolute;
+    width: 2px;
+    height: 200px;
+    background-color: rgba(0, 80, 180, 0.3);
+    left: 30px;
+    transform: rotate(5deg);
+}
+
+.dna-loader-strand:nth-child(2) {
+    left: 70px;
+    transform: rotate(-5deg);
+}
+
+.dna-loader-rung {
+    position: absolute;
+    width: 40px;
+    height: 4px;
+    left: 30px;
+    background: linear-gradient(to right, #37c7ff, #ff8f30);
+    box-shadow: 0 0 10px rgba(55, 199, 255, 0.5);
+    transform-origin: center;
+    animation: dnaLoaderSpin 1.5s infinite ease-in-out;
+}
+
+.dna-loader-rung:nth-child(3) { top: 10%; animation-delay: -0.2s; }
+.dna-loader-rung:nth-child(4) { top: 20%; animation-delay: -0.4s; }
+.dna-loader-rung:nth-child(5) { top: 30%; animation-delay: -0.6s; }
+.dna-loader-rung:nth-child(6) { top: 40%; animation-delay: -0.8s; }
+.dna-loader-rung:nth-child(7) { top: 50%; animation-delay: -1.0s; }
+.dna-loader-rung:nth-child(8) { top: 60%; animation-delay: -1.2s; }
+.dna-loader-rung:nth-child(9) { top: 70%; animation-delay: -1.4s; }
+.dna-loader-rung:nth-child(10) { top: 80%; animation-delay: -1.6s; }
+.dna-loader-rung:nth-child(11) { top: 90%; animation-delay: -1.8s; }
+
+@keyframes dnaLoaderSpin {
+    0%, 100% {
+        transform: rotate(0deg) scaleX(1);
+    }
+    50% {
+        transform: rotate(180deg) scaleX(0.6);
+    }
+}
+
+.loader-text {
+    position: absolute;
+    bottom: -40px;
+    font-size: 1.2rem;
+    color: var(--text-color);
+    font-weight: 300;
+    letter-spacing: 2px;
+    animation: loaderTextPulse 1.5s infinite;
+}
+
+@keyframes loaderTextPulse {
+    0%, 100% {
+        opacity: 0.7;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+.preloader-particles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at 20% 30%, rgba(55, 199, 255, 0.4) 0%, transparent 10%),
+        radial-gradient(circle at 70% 60%, rgba(255, 143, 48, 0.4) 0%, transparent 10%),
+        radial-gradient(circle at 40% 80%, rgba(55, 199, 255, 0.4) 0%, transparent 10%),
+        radial-gradient(circle at 80% 40%, rgba(255, 143, 48, 0.4) 0%, transparent 10%);
+    opacity: 0.2;
+    filter: blur(2px);
+    animation: preloaderParticleFloat 5s ease-in-out infinite alternate;
+}
+
+@keyframes preloaderParticleFloat {
+    0% {
+        background-position: 0 0, 0 0, 0 0, 0 0;
+    }
+    100% {
+        background-position: 20px 20px, -20px 20px, 20px -20px, -20px -20px;
+    }
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+p {
+    margin-bottom: 15px;
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-color);
+    transition: all 0.3s ease;
+}
+
+a:hover {
+    color: var(--secondary-color);
+}
+
+section {
+    padding: 40px 0;
+    position: relative;
+}
+
+/* Header & Navigation */
+header {
+    background-color: var(--dark-color);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    text-shadow: 0 0 8px rgba(126, 84, 255, 0.5);
+}
+
+.logo span {
+    color: var(--accent-color);
+    text-shadow: 0 0 8px rgba(255, 84, 177, 0.5);
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+nav ul li {
+    margin-left: 30px;
+}
+
+nav ul li a {
+    color: var(--text-color);
+    font-weight: 500;
+    position: relative;
+}
+
+nav ul li a:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: var(--primary-color);
+    left: 0;
+    bottom: -5px;
+    transition: width 0.3s ease;
+}
+
+nav ul li a:hover:after {
+    width: 100%;
+}
+
+/* Hero Section */
+.hero {
+    padding-top: 120px;
+    min-height: 90vh;
+    background: linear-gradient(135deg, #050510 0%, #0c0c1a 100%);
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 70% 50%, rgba(0, 80, 180, 0.08) 0%, rgba(10, 10, 20, 0) 70%);
+    pointer-events: none;
+}
+
+.hero .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row-reverse; /* Reverse order: DNA left, content right */
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 2;
+}
+
+.hero-content {
+    flex: 1;
+    min-width: 300px;
+    animation: fadeInRight 1s ease-out;
+    padding-left: 50px;
+    text-align: right;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: var(--text-color);
+    text-shadow: 0 0 10px rgba(126, 84, 255, 0.3);
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    color: #aaaaaa;
+    margin-bottom: 30px;
+}
+
+.cta-button {
+    display: inline-block;
+    background: var(--primary-color);
+    color: #ffffff;
+    padding: 15px 30px;
+    border-radius: 50px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 20px rgba(126, 84, 255, 0.5);
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-button::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transform: rotate(45deg);
+    transition: all 0.5s ease;
+    pointer-events: none;
+}
+
+.cta-button:hover {
+    background: var(--secondary-color);
+    color: #ffffff;
+    transform: translateY(-3px);
+    box-shadow: 0 0 30px rgba(126, 84, 255, 0.7);
+}
+
+.cta-button:hover::before {
+    left: 100%;
+}
+
+/* DNA Animation - Redesigned based on reference */
+.dna-model {
+    flex: 1;
+    min-width: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 600px;
+    perspective: 1200px;
+    background: radial-gradient(ellipse at center, rgba(0, 20, 50, 0.4) 0%, rgba(18, 18, 18, 0) 70%);
+}
+
+.dna-container {
+    width: 200px;
+    height: 500px;
+    position: relative;
+    transform-style: preserve-3d;
+    animation: spinDNA 18s linear infinite;
+}
+
+.dna-strand {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+}
+
+.dna-helix {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+}
+
+/* DNA Backbones */
+.dna-helix::before, .dna-helix::after {
+    content: '';
+    position: absolute;
+    width: 5px;
+    height: 100%;
+    background: rgba(30, 100, 180, 0.7);
+    border-radius: 3px;
+    left: calc(50% - 45px);
+    transform-style: preserve-3d;
+    box-shadow: 0 0 10px rgba(70, 130, 220, 0.8);
+}
+
+.dna-helix::after {
+    left: calc(50% + 40px);
+    background: rgba(40, 110, 190, 0.7);
+}
+
+.rung {
+    position: absolute;
+    width: 90px;
+    height: 6px;
+    left: 50%;
+    transform: translateX(-50%);
+    transform-style: preserve-3d;
+}
+
+/* Position each rung along the height of the DNA with more realistic helix twist */
+.rung:nth-child(1) { top: 0%; transform: translateX(-50%) translateZ(45px) rotateY(0deg); }
+.rung:nth-child(2) { top: 5%; transform: translateX(-50%) translateZ(43px) rotateY(18deg); }
+.rung:nth-child(3) { top: 10%; transform: translateX(-50%) translateZ(37px) rotateY(36deg); }
+.rung:nth-child(4) { top: 15%; transform: translateX(-50%) translateZ(28px) rotateY(54deg); }
+.rung:nth-child(5) { top: 20%; transform: translateX(-50%) translateZ(15px) rotateY(72deg); }
+.rung:nth-child(6) { top: 25%; transform: translateX(-50%) translateZ(0px) rotateY(90deg); }
+.rung:nth-child(7) { top: 30%; transform: translateX(-50%) translateZ(-15px) rotateY(108deg); }
+.rung:nth-child(8) { top: 35%; transform: translateX(-50%) translateZ(-28px) rotateY(126deg); }
+.rung:nth-child(9) { top: 40%; transform: translateX(-50%) translateZ(-37px) rotateY(144deg); }
+.rung:nth-child(10) { top: 45%; transform: translateX(-50%) translateZ(-43px) rotateY(162deg); }
+.rung:nth-child(11) { top: 50%; transform: translateX(-50%) translateZ(-45px) rotateY(180deg); }
+.rung:nth-child(12) { top: 55%; transform: translateX(-50%) translateZ(-43px) rotateY(198deg); }
+.rung:nth-child(13) { top: 60%; transform: translateX(-50%) translateZ(-37px) rotateY(216deg); }
+.rung:nth-child(14) { top: 65%; transform: translateX(-50%) translateZ(-28px) rotateY(234deg); }
+.rung:nth-child(15) { top: 70%; transform: translateX(-50%) translateZ(-15px) rotateY(252deg); }
+.rung:nth-child(16) { top: 75%; transform: translateX(-50%) translateZ(0px) rotateY(270deg); }
+.rung:nth-child(17) { top: 80%; transform: translateX(-50%) translateZ(15px) rotateY(288deg); }
+.rung:nth-child(18) { top: 85%; transform: translateX(-50%) translateZ(28px) rotateY(306deg); }
+.rung:nth-child(19) { top: 90%; transform: translateX(-50%) translateZ(37px) rotateY(324deg); }
+.rung:nth-child(20) { top: 95%; transform: translateX(-50%) translateZ(43px) rotateY(342deg); }
+
+/* Connect bases with a line */
+.rung::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    background: rgba(100, 170, 255, 0.3);
+    top: 3px;
+    left: 0;
+    z-index: -1;
+}
+
+.base {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    top: -4px;
+    transition: all 0.3s ease;
+}
+
+/* Base pair colors based on the reference image */
+.base-a {
+    background-color: #ff8f30; /* Orange/amber for A */
+    left: 0;
+    box-shadow: 0 0 15px rgba(255, 143, 48, 0.8);
+}
+
+.base-t {
+    background-color: #37c7ff; /* Bright blue for T */
+    right: 0;
+    box-shadow: 0 0 15px rgba(55, 199, 255, 0.8);
+}
+
+.base-g {
+    background-color: #ffdf44; /* Yellow for G */
+    left: 0;
+    box-shadow: 0 0 15px rgba(255, 223, 68, 0.8);
+}
+
+.base-c {
+    background-color: #3e9fff; /* Medium blue for C */
+    right: 0;
+    box-shadow: 0 0 15px rgba(62, 159, 255, 0.8);
+}
+
+/* Random glow effect for some bases to match reference image */
+.rung:nth-child(3) .base, 
+.rung:nth-child(7) .base, 
+.rung:nth-child(12) .base, 
+.rung:nth-child(17) .base {
+    box-shadow: 0 0 25px rgba(255, 180, 50, 1);
+    z-index: 10;
+}
+
+/* Particles around DNA */
+.dna-model::before {
+    content: '';
+    position: absolute;
+    
+    background-size: 2px 2px, 4px 4px, 3px 3px, 2px 2px, 3px 3px;
+    background-position: 0 0, 10px 10px, -10px 20px, 15px -10px, -15px -15px;
+    opacity: 0.3;
+    filter: blur(1px);
+    animation: floatParticles 8s ease-in-out infinite alternate;
+}
+
+@keyframes floatParticles {
+    0% {
+        background-position: 0 0, 10px 10px, -10px 20px, 15px -10px, -15px -15px;
+    }
+    100% {
+        background-position: 10px 10px, 20px 20px, 0 30px, 25px 0, -5px -5px;
+    }
+}
+
+@keyframes spinDNA {
+    0% {
+        transform: rotateY(0) rotateX(15deg);
+    }
+    100% {
+        transform: rotateY(360deg) rotateX(15deg);
+    }
+}
+
+/* DNA ambient light effect */
+.dna-model::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(ellipse at center, rgba(0, 80, 180, 0.1) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+/* About Section */
+.about {
+    background-color: var(--dark-color);
+    position: relative;
+    overflow: hidden;
+}
+
+.about::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 30% 70%, rgba(126, 84, 255, 0.05) 0%, rgba(18, 18, 18, 0) 60%);
+    pointer-events: none;
+}
+
+.about h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+    color: var(--primary-color);
+    text-shadow: 0 0 10px rgba(126, 84, 255, 0.3);
+}
+
+.about-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 2;
+}
+
+.about-text {
+    flex: 1;
+    min-width: 300px;
+    padding-right: 30px;
+}
+
+.about-text p {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    color: #aaaaaa;
+}
+
+.about-image {
+    flex: 1;
+    min-width: 300px;
+    display: flex;
+    justify-content: center;
+}
+
+.dna-small {
+    width: 150px;
+    height: 300px;
+    position: relative;
+}
+
+.dna-spiral {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    clip-path: polygon(
+        50% 0%, 
+        60% 10%, 
+        60% 20%, 
+        50% 30%, 
+        40% 20%, 
+        40% 10%,
+        50% 0%,
+        
+        50% 30%,
+        60% 40%, 
+        60% 50%, 
+        50% 60%, 
+        40% 50%, 
+        40% 40%,
+        50% 30%,
+        
+        50% 60%,
+        60% 70%, 
+        60% 80%, 
+        50% 90%, 
+        40% 80%, 
+        40% 70%,
+        50% 60%,
+        
+        50% 90%,
+        60% 100%, 
+        40% 100%, 
+        50% 90%
+    );
+    animation: pulseScale 4s ease-in-out infinite;
+    box-shadow: 0 0 30px rgba(126, 84, 255, 0.4);
+}
+
+@keyframes pulseScale {
+    0%, 100% {
+        transform: scale(1);
+        filter: hue-rotate(0deg);
+    }
+    50% {
+        transform: scale(1.1);
+        filter: hue-rotate(30deg);
+    }
+}
+/* Footer */
+footer {
+    background-color: var(--dark-color);
+    color: var(--text-color);
+    padding: 60px 0 20px;
+    border-top: 1px solid rgba(126, 84, 255, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 20% 80%, rgba(126, 84, 255, 0.05) 0%, rgba(0, 0, 0, 0) 70%);
+    pointer-events: none;
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 40px;
+    position: relative;
+    z-index: 2;
+}
+
+.footer-logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--text-color);
+    margin-bottom: 20px;
+    text-shadow: 0 0 8px rgba(126, 84, 255, 0.5);
+}
+
+.footer-logo span {
+    color: var(--accent-color);
+    text-shadow: 0 0 8px rgba(255, 84, 177, 0.5);
+}
+
+.footer-links, .footer-contact {
+    margin-bottom: 20px;
+}
+
+.footer-links h3, .footer-contact h3 {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    color: var(--primary-color);
+    text-shadow: 0 0 5px rgba(126, 84, 255, 0.3);
+}
+
+.footer-links ul {
+    list-style: none;
+}
+
+.footer-links ul li {
+    margin-bottom: 10px;
+}
+
+.footer-links ul li a {
+    color: rgba(224, 224, 224, 0.7);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.footer-links ul li a::before {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+.footer-links ul li a:hover {
+    color: var(--primary-color);
+}
+
+.footer-links ul li a:hover::before {
+    width: 100%;
+}
+
+.footer-contact p {
+    color: rgba(224, 224, 224, 0.7);
+    margin-bottom: 10px;
+}
+
+.copyright {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    color: rgba(224, 224, 224, 0.4);
+    position: relative;
+    z-index: 2;
+}
+
+/* Scroll Animation */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Apply scroll animations to sections */
+.about, .features, .process, .testimonials, .contact {
+    opacity: 0;
+    animation: fadeInUp 1s ease forwards;
+    animation-play-state: paused;
+}
+
+/* Trigger animations when sections come into view */
+.about.visible, .features.visible, .process.visible, .testimonials.visible, .contact.visible {
+    animation-play-state: running;
+}
+
+/* Use CSS to trigger animations on scroll */
+section:nth-of-type(2) {
+    animation-delay: 0.2s;
+}
+
+section:nth-of-type(3) {
+    animation-delay: 0.4s;
+}
+
+section:nth-of-type(4) {
+    animation-delay: 0.6s;
+}
+
+section:nth-of-type(5) {
+    animation-delay: 0.8s;
+}
+
+section:nth-of-type(6) {
+    animation-delay: 1s;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .hero-content, .dna-model {
+        flex: 100%;
+        text-align: center;
+    }
+    
+    .hero-content {
+        margin-bottom: 50px;
+    }
+    
+    .step:not(:last-child):after {
+        display: none;
+    }
+    
+    .step {
+        margin-bottom: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+    }
+    
+    nav ul {
+        margin-top: 20px;
+    }
+    
+    nav ul li {
+        margin: 0 10px;
+    }
+    
+    .hero {
+        padding-top: 180px;
+    }
+    
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+    
+    .feature-card, .testimonial-card {
+        min-width: 100%;
+    }
+    
+    .footer-content > div {
+        flex: 100%;
+        margin-bottom: 30px;
+    }
+}
+
+@media (max-width: 576px) {
+    section {
+        padding: 60px 0;
+    }
+    
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+    
+    .about h2, .features h2, .process h2, .testimonials h2, .contact h2 {
+        font-size: 2rem;
+    }
+    
+    .dna-model {
+        height: 400px;
+    }
+    
+    .dna-container {
+        width: 200px;
+        height: 350px;
+    }
+}
