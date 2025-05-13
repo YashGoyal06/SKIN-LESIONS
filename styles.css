@@ -54,6 +54,7 @@ body:not(.custom-cursor) nav ul li a,
 body:not(.custom-cursor) .footer-links ul li a {
     cursor: url('dna-cursor-pointer.svg'), pointer;
 }
+
 /* Custom Cursor Effects */
 .cursor-glow {
     position: fixed;
@@ -246,13 +247,22 @@ nav {
 }
 
 .logo {
+    display: flex;
+    align-items: center;
     font-size: 1.8rem;
     font-weight: 700;
     color: var(--primary-color);
     text-shadow: 0 0 8px rgba(126, 84, 255, 0.5);
 }
 
-.logo span {
+.logo-image {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+    object-fit: contain;
+}
+
+.logo-text span {
     color: var(--accent-color);
     text-shadow: 0 0 8px rgba(255, 84, 177, 0.5);
 }
@@ -372,7 +382,7 @@ nav ul li a:hover:after {
     background: var(--secondary-color);
     color: #ffffff;
     transform: translateY(-3px);
-    box-shadow: 0 0 30px rgba(126, 84, 255, 0.7);
+    box_shadow: 0 0 30px rgba(126, 84, 255, 0.7);
 }
 
 .cta-button:hover::before {
@@ -524,11 +534,7 @@ nav ul li a:hover:after {
     position: absolute;
     
     background-size: 2px 2px, 4px 4px, 3px 3px, 2px 2px, 3px 3px;
-    background-position: 0 0, 10px 10px, -10px 20px, 15px -10px, -15px -15px;
-    opacity: 0.3;
-    filter: blur(1px);
-    animation: floatParticles 8s ease-in-out infinite alternate;
-}
+    background-position: 0 0, 10px 10px, -10px 20px, 15px -10px, -15px -****
 
 @keyframes floatParticles {
     0% {
@@ -667,6 +673,7 @@ nav ul li a:hover:after {
         filter: hue-rotate(30deg);
     }
 }
+
 /* Footer */
 footer {
     background-color: var(--dark-color);
@@ -872,7 +879,7 @@ section:nth-of-type(6) {
         padding-top: 180px;
     }
     
-    .hero-content h1 {
+    .hero:where(.hero-content h1) {
         font-size: 2.5rem;
     }
     
@@ -906,5 +913,26 @@ section:nth-of-type(6) {
     .dna-container {
         width: 200px;
         height: 350px;
+    }
+}
+
+/* Responsive adjustments for logo */
+@media (max-width: 768px) {
+    .logo-image {
+        width: 30px;
+        height: 30px;
+    }
+    .logo {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .logo-image {
+        width: 25px;
+        height: 25px;
+    }
+    .logo {
+        font-size: 1.3rem;
     }
 }
