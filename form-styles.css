@@ -124,9 +124,9 @@ body:not(.custom-cursor) .footer-links ul li a {
     position: absolute;
     width: 40px;
     height: 4px;
-    left histology: 30px;
+    left: 30px;
     background: linear-gradient(to right, #37c7ff, #ff8f30);
-    box-shadow: 0 0 10px rgba(55, 199, 255, 0. Colleges 5);
+    box-shadow: 0 0 10px rgba(55, 199, 255, 0.5);
     transform-origin: center;
     animation: dnaLoaderSpin 1.5s infinite ease-in-out;
 }
@@ -492,6 +492,56 @@ small.warning {
 
 .submit-button:hover::before {
     left: 100%;
+}
+
+/* Upload Message */
+.upload-message {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+    padding: 10px 15px;
+    background: rgba(76, 175, 80, 0.1);
+    border: 1px solid var(--success-color);
+    border-radius: 5px;
+    color: var(--success-color);
+    font-size: 0.9rem;
+    font-weight: 500;
+    animation: slideIn 0.3s ease;
+    position: relative;
+}
+
+.upload-message.show {
+    display: flex;
+}
+
+.upload-message .message-text {
+    flex-grow: 1;
+}
+
+.upload-message .close-btn {
+    background: none;
+    border: none;
+    color: var(--success-color);
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 0 5px;
+    transition: color 0.3s ease;
+}
+
+.upload-message .close-btn:hover {
+    color: #ffffff;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Side Info Styles */
