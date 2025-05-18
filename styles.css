@@ -25,6 +25,10 @@
     cursor: none !important;
 }
 
+body:not(.custom-cursor) {
+    cursor: url('dna-cursor.svg'), auto; /* Matched with about-style.css */
+}
+
 html {
     scroll-behavior: smooth;
 }
@@ -59,7 +63,7 @@ body:not(.custom-cursor) .testimonial-card,
 body:not(.custom-cursor) .step-number, 
 body:not(.custom-cursor) nav ul li a, 
 body:not(.custom-cursor) .footer-links ul li a {
-    cursor: pointer; /* Changed to default pointer to avoid custom cursor issues */
+    cursor: url('dna-cursor-pointer.svg'), pointer; /* Matched with about-style.css */
 }
 
 /* Custom Cursor Effects */
@@ -84,11 +88,11 @@ body:not(.custom-cursor) .footer-links ul li a {
     pointer-events: none;
     z-index: 9998;
     opacity: 0.8;
-    border: 3px solid #37c7ffe6;
+    border: 3px solid rgba(55, 199, 255, 0.9); /* Matched with about-style.css */
     background-color: rgba(55, 199, 255, 0.2);
     transform: translate(-50%, -50%);
     transition: width 0.3s ease, height 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
-} 
+}
 
 /* Preloader */
 .preloader {
