@@ -59,7 +59,7 @@ body:not(.custom-cursor) .testimonial-card,
 body:not(.custom-cursor) .step-number, 
 body:not(.custom-cursor) nav ul li a, 
 body:not(.custom-cursor) .footer-links ul li a {
-    cursor: url('dna-cursor-pointer.svg'), pointer;
+    cursor: pointer; /* Changed to default pointer to avoid custom cursor issues */
 }
 
 /* Custom Cursor Effects */
@@ -81,7 +81,7 @@ body:not(.custom-cursor) .footer-links ul li a {
     width: 25px;
     height: 25px;
     border-radius: 50%;
-    pointer-elements: none;
+    pointer-events: none;
     z-index: 9998;
     opacity: 0.8;
     border: 3px solid #37c7ffe6;
@@ -361,6 +361,7 @@ nav ul li a:hover:after {
     box-shadow: 0 0 20px rgba(126, 84, 255, 0.5);
     position: relative;
     overflow: hidden;
+    z-index: 10000; /* Ensure the button is above other elements */
 }
 
 .cta-button::before {
@@ -373,7 +374,7 @@ nav ul li a:hover:after {
     background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
     transform: rotate(45deg);
     transition: all 0.5s ease;
-    pointer-events: none;
+    pointer-events: none; /* Ensure the pseudo-element doesn't block clicks */
 }
 
 .cta-button:hover {
@@ -851,7 +852,7 @@ section:nth-of-type(6) {
     }
     
     .hero-content {
-        margin-bottom: 50px;
+        margin-bottom: 80px; /* Increased space between hero-content (button) and DNA model */
     }
     
     .step:not(:last-child):after {
