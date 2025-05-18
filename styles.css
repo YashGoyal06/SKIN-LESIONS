@@ -81,7 +81,7 @@ body:not(.custom-cursor) .footer-links ul li a {
     width: 25px;
     height: 25px;
     border-radius: 50%;
-    pointer-events: none;
+    pointer-elements: none;
     z-index: 9998;
     opacity: 0.8;
     border: 3px solid #37c7ffe6;
@@ -928,6 +928,7 @@ section:nth-of-type(6) {
         text-align: center !important; /* Override text-align: right with higher specificity */
         padding-left: 0; /* Remove padding that shifts content */
         margin: 0 auto; /* Ensure the content block itself is centered */
+        margin-bottom: 80px; /* Increased space between hero-content (button) and DNA model */
     }
 
     .cta-button {
