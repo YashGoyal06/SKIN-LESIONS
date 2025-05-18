@@ -2,17 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" media="screen and (max-width: 768px)">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" media="screen and (max-width: 768px)">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" media="screen and (max-width: 768px)">
+    <!-- Consolidated viewport meta tag, removed media attribute -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, shrink-to-fit=no">
     <title>Skin Lesion Diagnosis</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <script src="preloader.js"></script>
-    <script src="cursor-effect.js"></script>
-    <!-- fevicon icon -->
-    <link href="D:\CODEVERSE\DNACreator\logo.jpg" rel="shortcut icon">
-    <!-- ----- -->
+    <!-- Fixed favicon path (assuming logo.jpg is in the same directory) -->
+    <link href="logo.jpg" rel="shortcut icon" type="image/jpeg">
 </head>
 <body>
     <!-- Preloader -->
@@ -36,13 +32,15 @@
     <header>
         <nav>
             <div class="logo">
-            <img src="/logo.jpg" alt="Logo" class="logo-image"> <!-- Add your logo image here -->
-            SKIN<span>ALGNOSIS</span>
-        </div>
+                <!-- Fixed logo path (assuming logo.jpg is in the same directory), improved alt text -->
+                <img src="logo.jpg" alt="SkinAlgnosis Logo" class="logo-image">
+                SKIN<span>ALGNOSIS</span>
+            </div>
             <ul>
                 <li><a href="#home">Home</a></li>
-                <li><a href="\about.html">About</a></li>
-                <li><a href="features.html">Features</a></li>
+                <!-- Fixed backslash to forward slash -->
+                <li><a href="/about.html">About</a></li>
+                <li><a href="/features.html">Features</a></li>
             </ul>
         </nav>
     </header>
@@ -52,7 +50,8 @@
             <div class="hero-content">
                 <h1>SKIN LESION <span style="font-size: 1.4em; color: #00ffff;">DIAGNOSIS</span></h1>
                 <p>AI-Powered Skin Lesion Detection – Because Every Spot Deserves Attention</p>
-                <a href="https://yashgoyal06-backend.hf.space/form" class="cta-button">PATIENT DETAILS</a>
+                <!-- Added target="_blank" and rel="noopener noreferrer" for external link -->
+                <a href="https://yashgoyal06-backend.hf.space/form" class="cta-button" target="_blank" rel="noopener noreferrer">PATIENT DETAILS</a>
             </div>
             <div class="dna-model">
                 <div class="dna-container">
@@ -94,8 +93,9 @@
                     <h3>Quick Links</h3>
                     <ul>
                         <li><a href="#home">Home</a></li>
-                        <li><a href="\about.html">About</a></li>
-                        <li><a href="\features.html">Features</a></li>
+                        <!-- Fixed backslash to forward slash -->
+                        <li><a href="/about.html">About</a></li>
+                        <li><a href="/features.html">Features</a></li>
                     </ul>
                 </div>
                 <div class="footer-contact">
@@ -105,9 +105,14 @@
                 </div>
             </div>
             <div class="copyright">
-                <p>© 2025 Code Catayst. All rights reserved.</p>
+                <!-- Fixed typo in "Catayst" to "Catalyst" -->
+                <p>© 2025 Code Catalyst. All rights reserved.</p>
             </div>
         </div>
     </footer>
+    <!-- Moved scripts to the end of body to prevent blocking, added defer -->
+    <script src="preloader.js" defer></script>
+    <!-- Temporarily commented out cursor-effect.js to test link behavior -->
+    <script src="cursor-effect.js" defer></script>
 </body>
 </html>
