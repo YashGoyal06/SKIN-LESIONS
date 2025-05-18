@@ -25,7 +25,6 @@
     cursor: none !important;
 }
 
-
 html {
     scroll-behavior: smooth;
 }
@@ -38,6 +37,7 @@ body {
     overflow-x: hidden;
     position: relative;
 }
+
 .logo {
     display: flex;
     align-items: center;
@@ -61,6 +61,7 @@ body:not(.custom-cursor) nav ul li a,
 body:not(.custom-cursor) .footer-links ul li a {
     cursor: url('dna-cursor-pointer.svg'), pointer;
 }
+
 /* Custom Cursor Effects */
 .cursor-glow {
     position: fixed;
@@ -529,7 +530,6 @@ nav ul li a:hover:after {
 .dna-model::before {
     content: '';
     position: absolute;
-    
     background-size: 2px 2px, 4px 4px, 3px 3px, 2px 2px, 3px 3px;
     background-position: 0 0, 10px 10px, -10px 20px, 15px -10px, -15px -15px;
     opacity: 0.3;
@@ -674,6 +674,7 @@ nav ul li a:hover:after {
         filter: hue-rotate(30deg);
     }
 }
+
 /* Footer */
 footer {
     background-color: var(--dark-color);
@@ -913,5 +914,24 @@ section:nth-of-type(6) {
     .dna-container {
         width: 200px;
         height: 350px;
+    }
+}
+
+/* Updated styles to fix centering on mobile devices */
+@media (max-width: 992px) {
+    .hero .container {
+        flex-direction: column; /* Stack elements vertically on mobile */
+        align-items: center; /* Center horizontally */
+    }
+
+    .hero .container .hero-content {
+        text-align: center !important; /* Override text-align: right with higher specificity */
+        padding-left: 0; /* Remove padding that shifts content */
+        margin: 0 auto; /* Ensure the content block itself is centered */
+    }
+
+    .cta-button {
+        display: block; /* Make the button a block element */
+        margin: 0 auto; /* Center the button horizontally */
     }
 }
