@@ -2,16 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <!-- Consolidated viewport meta tag, removed media attribute -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, shrink-to-fit=no">
     <title>Skin Lesion Diagnosis</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="/css/styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <!-- Fixed favicon path (assuming logo.jpg is in the same directory) -->
-    <link href="logo.jpg" rel="shortcut icon" type="image/jpeg">
+    <link href="/assets/images/logo.jpg" rel="shortcut icon" type="image/jpeg">
 </head>
 <body>
-    <!-- Preloader -->
     <div class="preloader">
         <div class="preloader-particles"></div>
         <div class="dna-loader">
@@ -32,15 +29,13 @@
     <header>
         <nav>
             <div class="logo">
-                <!-- Fixed logo path (assuming logo.jpg is in the same directory), improved alt text -->
-                <img src="logo.jpg" alt="SkinAlgnosis Logo" class="logo-image">
+                <img src="/assets/images/logo.jpg" alt="SkinAlgnosis Logo" class="logo-image">
                 SKIN<span>ALGNOSIS</span>
             </div>
             <ul>
                 <li><a href="#home">Home</a></li>
-                <!-- Fixed backslash to forward slash -->
-                <li><a href="/about.html">About</a></li>
-                <li><a href="/features.html">Features</a></li>
+                <li><a href="/html/about.html">About</a></li>
+                <li><a href="/html/features.html">Features</a></li>
             </ul>
         </nav>
     </header>
@@ -55,10 +50,8 @@
             </div>
             <div class="dna-model">
                 <div class="dna-container">
-                    <!-- DNA Helix Structure - created with CSS -->
                     <div class="dna-strand">
                         <div class="dna-helix">
-                            <!-- DNA Rungs (20 pairs) -->
                             <div class="rung"><div class="base base-a"></div><div class="base base-t"></div></div>
                             <div class="rung"><div class="base base-g"></div><div class="base base-c"></div></div>
                             <div class="rung"><div class="base base-t"></div><div class="base base-a"></div></div>
@@ -93,9 +86,8 @@
                     <h3>Quick Links</h3>
                     <ul>
                         <li><a href="#home">Home</a></li>
-                        <!-- Fixed backslash to forward slash -->
-                        <li><a href="/about.html">About</a></li>
-                        <li><a href="/features.html">Features</a></li>
+                        <li><a href="/html/about.html">About</a></li>
+                        <li><a href="/html/features.html">Features</a></li>
                     </ul>
                 </div>
                 <div class="footer-contact">
@@ -105,14 +97,11 @@
                 </div>
             </div>
             <div class="copyright">
-                <!-- Fixed typo in "Catayst" to "Catalyst" -->
                 <p>© 2025 Code Catalyst. All rights reserved.</p>
             </div>
         </div>
     </footer>
-    <!-- Moved scripts to the end of body to prevent blocking, added defer -->
-    <script src="preloader.js" defer></script>
-    <!-- Temporarily commented out cursor-effect.js to test link behavior -->
-    <script src="cursor-effect.js" defer></script>
+    <script src="/js/preloader.js" defer></script>
+    <script src="/js/cursor-effect.js" defer></script>
 </body>
 </html>
