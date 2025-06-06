@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Diagnosis Report | Skin ALGNOSIS</title>
+  <link rel="stylesheet" href="/static/form-styles.css" />
+  <link rel="shortcut icon" href="/static/logo.jpg" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet"/>
+  <script src="/static/preloader.js"></script>
+  <script src="/static/cursor-effect.js"></script>
+  <script>
+    function printPage() {
+      window.print();
+    }
+  </script>
+</head>
+<body>
+  <div class="preloader">
+    <div class="preloader-particles"></div>
+    <div class="dna-loader">
+      <div class="dna-loader-strand"></div>
+      <div class="dna-loader-strand"></div>
+      <div class="dna-loader-rung"></div>
+      <div class="dna-loader-rung"></div>
+      <div class="dna-loader-rung"></div>
+      <div class="dna-loader-rung"></div>
+      <div class="dna-loader-rung"></div>
+      <div class="dna-loader-rung"></div>
+      <div class="dna-loader-rung"></div>
+      <div class="dna-loader-rung"></div>
+      <div class="loader-text">LOADING...</div>
+    </div>
+  </div>
+
+  <header>
+    <nav>
+      <div class="logo" style="color: beige;">SKIN <span style="color: #00ffff;">ALGNOSIS</span></div>
+      <ul>
+        <li><a href="https://skinalgnosis.vercel.app/">Home</a></li>
+        <li><a href="https://skinalgnosis.vercel.app/about.html">About</a></li>
+        <li><a href="https://skinalgnosis.vercel.app/features.html">Features</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="form-section">
+    <div class="container">
+      <div class="form-container">
+        <h1 style="color: white;">Diagnosis Report</h1>
+        <div class="form-wrapper">
+          <div class="result-section" style="display: block;">
+            <h2>Patient Details</h2>
+            <p><strong>Full Name:</strong> {{ name }}</p>
+            <p><strong>Email Address:</strong> {{ email }}</p>
+            <p><strong>Gender:</strong> {{ gender }}</p>
+            <p><strong>Age:</strong> {{ age }}</p>
+
+            <h2 style="margin-top: 30px;">Prediction Result</h2>
+            <p><strong>Diagnosis:</strong> {{ prediction }}</p>
+            <p><strong>Confidence:</strong> {{ confidence }}</p>
+
+            {% if message %}
+              <p class="warning-message">{{ message }}</p>
+            {% endif %}
+
+            <div style="margin-top: 40px; display: flex; gap: 15px; flex-wrap: wrap;">
+              <a href="/form" class="submit-button">← Back to Form</a>
+              <a href="/download-report" class="submit-button">⬇ Download PDF</a>
+              <button onclick="printPage()" class="submit-button">🖨 Print Report</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">CODE<span>CATALYST</span></div>
+        <div class="footer-links">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="/form">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Features</a></li>
+          </ul>
+        </div>
+        <div class="footer-contact">
+          <h3>Support</h3>
+          <p>Email: info.skinalgnosiss@gmail.com</p>
+          <p>Phone: 7817833974 / 7983595318</p>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>© 2025 Skin Lesion Diagnosis. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
