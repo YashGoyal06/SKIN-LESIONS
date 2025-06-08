@@ -9,8 +9,6 @@
 [![Live Demo](https://img.shields.io/badge/🌐_Live_Demo-Visit_Now-00D4AA?style=for-the-badge)](https://skinalgnosis.vercel.app/)
 [![Model](https://img.shields.io/badge/🤖_AI_Model-Download-FF6B6B?style=for-the-badge)](https://drive.google.com/file/d/1vzNYR_Z4WYRKQQYGRvQ6PgTFs2k60k7Z/view?usp=sharing)
 [![Backend](https://img.shields.io/badge/🚀_Backend-Hugging_Face-FFD93D?style=for-the-badge)](https://huggingface.co/spaces/yashgoyal06/backend/tree/main)
-> 🧠 **Note:** The AI model used in this project is trained by us and hosted on Google Drive.  
-> 👉 [**Click here to download the trained model**](https://drive.google.com/file/d/1vzNYR_Z4WYRKQQYGRvQ6PgTFs2k60k7Z/view?usp=sharing)
 
 *Revolutionizing dermatological care through artificial intelligence*
 
